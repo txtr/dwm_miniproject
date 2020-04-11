@@ -6,6 +6,8 @@ from sklearn.cluster import KMeans
 def parse(csv_file, csv_folder, x_axis_col, y_axis_col):
     dataset = pd.read_csv(csv_folder + csv_file)
     X = dataset.iloc[:, [x_axis_col, y_axis_col]].values
+    elbow(X, cluster_limit=int(input("Cluster Limit: ")))
+    kmeans(X, n_clusters=int(input("No. of clusters: ")))
 
 
 def elbow(X, cluster_limit=11):
