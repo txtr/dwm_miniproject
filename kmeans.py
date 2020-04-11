@@ -3,12 +3,10 @@ import pandas as pd
 from sklearn.cluster import KMeans
 
 
-def parse(csv_file, csv_folder, x_axis_col, y_axis_col):
-    dataset = pd.read_csv(csv_folder + csv_file)
+def parse(csv_file, x_axis_col, y_axis_col, csv_folder="csv"):
+    dataset = pd.read_csv(csv_folder + "//" + csv_file)
     X = dataset.iloc[:, [x_axis_col, y_axis_col]].values
-    elbow(X, cluster_limit=int(input("Cluster Limit: ")))
-    kmeans(X, n_clusters=int(input("No. of clusters: ")))
-
+    return X
 
 def elbow(X, cluster_limit=11):
     wcss = []

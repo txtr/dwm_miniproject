@@ -1,7 +1,9 @@
 import os
 
-from flask import Flask, request, flash, redirect, url_for
+from flask import Flask, request, flash, redirect
 from werkzeug.utils import secure_filename
+
+from kmeans import parse, elbow, kmeans
 
 UPLOAD_FOLDER = 'csv'
 ALLOWED_EXTENSIONS = {'csv'}
@@ -30,7 +32,11 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return "file uploaded"
+            print(filename)
+            X = parse(filename, 3, 4)
+            elbow(X)
+            kmeans(X, n_clusters=5)
+            return "DONE"
     return '''
     <!doctype html>
     <title>Upload new File</title>
