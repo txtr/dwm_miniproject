@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, flash, redirect
+from flask import Flask, request, flash, redirect, render_template
 from werkzeug.utils import secure_filename
 
 from kmeans import parse, elbow, kmeans
@@ -37,15 +37,7 @@ def upload_file():
             elbow(X)
             kmeans(X, n_clusters=5)
             return "DONE"
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template('upload.html')
 
 
 if __name__ == '__main__':

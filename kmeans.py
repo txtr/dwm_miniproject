@@ -8,6 +8,7 @@ def parse(csv_file, x_axis_col, y_axis_col, csv_folder="csv"):
     X = dataset.iloc[:, [x_axis_col, y_axis_col]].values
     return X
 
+
 def elbow(X, cluster_limit=11):
     wcss = []
     for i in range(1, cluster_limit):
