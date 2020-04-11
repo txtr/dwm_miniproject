@@ -1,4 +1,5 @@
 # Hierarchical Clustering
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.cluster.hierarchy as sch
@@ -16,7 +17,7 @@ def dendrogram(X):
     plt.title('Dendrogram')
     plt.xlabel('X')
     plt.ylabel('Euclidean distances')
-    plt.savefig('hc1.png')
+    plt.savefig(os.path.join('static', 'dendogram.png'))
     plt.close()
 
 
@@ -32,6 +33,6 @@ def hc(X, clusters):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.legend()
-    plt.savefig('hc2.png')
+    plt.savefig(os.path.join('static', 'hc.png'))
     plt.close()
 

@@ -1,3 +1,4 @@
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.cluster import KMeans
@@ -19,7 +20,7 @@ def elbow(X, cluster_limit=11):
     plt.title('The Elbow Method')
     plt.xlabel('Number of clusters')
     plt.ylabel('WCSS')
-    plt.savefig('elbow.png')
+    plt.savefig(os.path.join('static', 'elbow.png'))
     plt.close()
 
 
@@ -35,5 +36,5 @@ def kmeans(X, n_clusters, random_state=42):
     plt.xlabel('X AXIS')
     plt.ylabel('Y AXIS')
     plt.legend()
-    plt.savefig('kmeans_clusters.png')
+    plt.savefig(os.path.join('static','kmeans_clusters.png'))
     plt.close()
